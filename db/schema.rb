@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180408171539) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "In Process"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,6 +2,13 @@ describe 'Feature Test: Category', :type => :feature do
 
   describe "Item List" do
     before(:each) do
+      User.create(email: "email@email.com", password: "password")
+      5.times do |i|
+        Item.create(title: "Item ##{i}", inventory: i, price: i + 0.0, category_id: i)
+      end
+      5.times do |i|
+        Category.create(title: "Category ##{i}")
+      end
       @category = Category.first
       @items = @category.items
       visit category_path(@category)
