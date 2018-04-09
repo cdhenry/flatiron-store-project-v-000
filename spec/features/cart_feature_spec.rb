@@ -5,9 +5,6 @@ describe 'Feature Test: Cart', :type => :feature do
     context "logged in" do
       before(:each) do
         User.create(email: "email@email.com", password: "password")
-        5.times do |i|
-          Item.create(title: "Item ##{i}", inventory: i, price: i + 0.0, category_id: i)
-        end
         @user = User.first
         @user.current_cart = @user.carts.create
         @current_cart = @user.current_cart
@@ -64,6 +61,7 @@ describe 'Feature Test: Cart', :type => :feature do
 
     context "logged in" do
       before(:each) do
+        User.create(email: "email@email.com", password: "password")
         @user = User.first
         login_as(@user, scope: :user)
       end
