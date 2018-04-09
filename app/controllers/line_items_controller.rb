@@ -5,12 +5,7 @@ class LineItemsController < ApplicationController
       current_user.save
     end
 
-    if line_item = LineItem.find_by(item_id: params[:item_id], cart_id: current_cart.id)
-      line_item.quantity = line_item.quantity + 1
-      line_item.save
-    else
-      LineItem.create(item_id: params[:item_id], cart_id: current_cart.id)
-    end
+    current_cart.add_item(params[:item_id]).save
 
     redirect_to cart_path(current_cart)
   end
