@@ -9,8 +9,5 @@ class LineItemsController < ApplicationController
     else
       redirect_to store_path, {notice: 'Unable to add item'}
     end
-    
-
-    redirect_to cart_path(current_cart)
   end
 end
